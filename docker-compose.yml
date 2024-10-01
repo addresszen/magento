@@ -1,0 +1,26 @@
+services:
+  db:
+    image: library/mariadb:10.4-bionic
+    volumes:
+      - db-data:/var/lib/mysql/data
+    env_file:
+      - ./docker/.env
+  web:
+    build: .
+    ports:
+      - "3000:80"
+    links:
+      - db
+    env_file:
+      - ./docker/.env
+    volumes:
+      - ".:/var/www/html/app/code/Addresszen/Lookup"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8580:80"
+    links:
+      - db
+volumes:
+  db-data:

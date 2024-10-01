@@ -1,0 +1,216 @@
+<?xml version="1.0" ?>
+<config
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd"
+>
+  <system>
+    <section
+      id="address_zen"
+      translate="label"
+      sortOrder="100"
+      showInDefault="1"
+      showInWebsite="1"
+      showInStore="1"
+    >
+      <label>Address Zen</label>
+      <tab>service</tab>
+      <resource>Addresszen_Lookup::addresszen</resource>
+      <group
+        id="required"
+        translate="label"
+        sortOrder="10"
+        showInDefault="1"
+        showInWebsite="1"
+        showInStore="1"
+      >
+        <label>Required</label>
+        <field
+          id="enabled"
+          type="select"
+          translate="label,comment"
+          sortOrder="10"
+          showInDefault="1"
+          showInWebsite="1"
+          showInStore="1"
+        >
+          <label>Enabled</label>
+          <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+          <config_path>addresszen/settings/enabled</config_path>
+          <comment>Enable UK Address Search and Validation</comment>
+        </field>
+        <field
+          id="api_key"
+          type="text"
+          translate="label,comment"
+          sortOrder="20"
+          showInDefault="1"
+          showInWebsite="1"
+          showInStore="1"
+        >
+          <label>API Key</label>
+          <config_path>addresszen/settings/api_key</config_path>
+          <comment>Your API Key can be found on your dashboard</comment>
+          <depends>
+            <field id="enabled">1</field>
+          </depends>
+        </field>
+      </group>
+      <group
+        id="store_configuration"
+        translate="label"
+        sortOrder="20"
+        showInDefault="1"
+        showInWebsite="1"
+        showInStore="1"
+      >
+        <label>Store Configuration</label>
+        <field
+          id="autocomplete"
+          type="select"
+          translate="label"
+          sortOrder="50"
+          showInDefault="1"
+          showInWebsite="1"
+          showInStore="1"
+        >
+          <label>Enable Address Autocomplete</label>
+          <comment>
+            This will enable address autocomplete on the first address line on your address forms.
+          </comment>
+          <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+          <config_path>addresszen/settings/autocomplete</config_path>
+          <depends>
+            <field id="enabled">1</field>
+          </depends>
+        </field>
+        <field
+                id="remove_organisation_store"
+                type="select"
+                translate="label,comment"
+                sortOrder="90"
+                showInDefault="1"
+                showInWebsite="1"
+                showInStore="1"
+        >
+          <label>Remove Organisation</label>
+          <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+          <config_path>addresszen/settings/remove_organisation_store</config_path>
+          <comment>Remove organisation name from first line of address.</comment>
+          <depends>
+            <field id="enabled">1</field>
+          </depends>
+        </field>
+      </group>
+      <group
+              id="store_admin_configuration"
+              translate="label"
+              sortOrder="20"
+              showInDefault="1"
+              showInWebsite="1"
+              showInStore="1"
+      >
+      <label>Store Admin Configuration</label>
+        <field
+                id="enable_admin_integration"
+                type="select"
+                translate="label,comment"
+                sortOrder="80"
+                showInDefault="1"
+                showInWebsite="1"
+                showInStore="1"
+        >
+          <label>Enable Address Autocomplete</label>
+          <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+          <comment>
+            This will enable address autocomplete on address forms in your Store Admin pages. In particular sales and customers.
+          </comment>
+          <config_path>addresszen/settings/admin_autocomplete</config_path>
+          <depends>
+            <field id="enabled">1</field>
+          </depends>
+        </field>
+        <field
+                id="remove_organisation_admin"
+                type="select"
+                translate="label,comment"
+                sortOrder="90"
+                showInDefault="1"
+                showInWebsite="1"
+                showInStore="1"
+        >
+          <label>Remove Organisation</label>
+          <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+          <config_path>addresszen/settings/remove_organisation_admin</config_path>
+          <comment>Remove organisation name from first line of address.</comment>
+          <depends>
+            <field id="enable_admin_integration">1</field>
+          </depends>
+        </field>
+      </group>
+      <group
+        id="admin"
+        translate="label"
+        sortOrder="30"
+        showInDefault="1"
+        showInWebsite="1"
+        showInStore="1"
+      >
+        <label>Advanced</label>
+        <field
+          id="user_token"
+          type="text"
+          translate="label,comment"
+          sortOrder="30"
+          showInDefault="1"
+          showInWebsite="1"
+          showInStore="1"
+        >
+          <label>User Token</label>
+          <comment>
+            Your User Token can be found on your accounts page. This is not required for your address validation to function. It is only required if you need to retrieve usage statistics on your API Key.
+          </comment>
+          <config_path>addresszen/settings/user_token</config_path>
+          <depends>
+            <field id="enabled">1</field>
+          </depends>
+        </field>
+        <field
+                id="autocomplete_override"
+                type="textarea"
+                translate="label,comment"
+                sortOrder="80"
+                showInDefault="1"
+                showInWebsite="1"
+                showInStore="1"
+        >
+          <label>Autocomplete Override</label>
+          <comment>
+            Advanced: Custom override code for Address Finder. Please see our documentation for how to use this.
+          </comment>
+          <config_path>addresszen/settings/autocomplete_override</config_path>
+          <depends>
+            <field id="enabled">1</field>
+          </depends>
+        </field>
+        <field
+                id="custom_fields"
+                type="textarea"
+                translate="label,comment"
+                sortOrder="80"
+                showInDefault="1"
+                showInWebsite="1"
+                showInStore="1"
+        >
+          <label>Custom Fields Configuration</label>
+          <comment>
+            Advanced: Custom fields configuration to enable additional fields to bind autocomplete solution like coming from different plugin that handles address data.
+          </comment>
+          <config_path>addresszen/settings/custom_fields</config_path>
+          <depends>
+            <field id="enabled">1</field>
+          </depends>
+        </field>
+      </group>
+    </section>
+  </system>
+</config>

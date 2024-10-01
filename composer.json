@@ -1,0 +1,32 @@
+{
+  "name": "addresszen/lookup",
+  "description": "AddressZen address search magento extension. Addresszen.com",
+  "type": "magento2-module",
+  "require": {
+    "php": "~5.5.0|~5.6.0|>=7.0|>=8.0"
+  },
+  "support": {
+    "email": "support@addresszen.com",
+    "chat": "https://chat.addresszen.com",
+    "docs": "https:///addresszen.com/guides/magento",
+    "source": "https://github.com/addresszen/magento",
+    "issues": "https://github.com/addresszen/magento/issues"
+  },
+  "authors": [
+    {
+      "name": "Address Zen",
+      "email": "support@addresszen.com",
+      "homepage": "https://addresszen.com/",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Addresszen\\Lookup\\": ""
+    }
+  },
+  "license": "MIT"
+}

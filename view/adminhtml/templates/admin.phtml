@@ -1,0 +1,43 @@
+<?php /** @var Magento\Framework\View\TemplateEngine\Php $this */
+$helper = $this->helper('Addresszen\Lookup\Helper\Data');
+?>
+<?php if(!isset($secureRenderer)) { ?>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+        var apiKey = "<?= $helper->getAdminConfig('api_key') ?>";
+        var autocomplete = <?= $helper->getAdminConfig('addressAutocomplete') ?>;
+        var removeOrganisation = <?= $helper->getAdminConfig('removeOrganisation') ?>;
+        var enabled = <?= $helper->getAdminConfig('enabled') ?>;
+        var customFields = <?= trim(preg_replace("/\r|\n/", "", $helper->getAdminConfig('customFields'))) ?>;
+        // Exit early if disabled
+        if (enabled === false) return;
+        window.idpcConfig = {
+            apiKey: apiKey,
+            autocomplete: autocomplete,
+            removeOrganisation: removeOrganisation,
+            customFields: customFields
+        };
+        window.zenStart();
+        });
+    </script>
+<?php } else {
+    echo $secureRenderer->renderTag('script', [], '
+        document.addEventListener("DOMContentLoaded", function() {
+          var apiKey = "' . $helper->getAdminConfig('api_key') . '";
+          var autocomplete = ' . $helper->getAdminConfig('addressAutocomplete') . ';
+          var removeOrganisation = ' . $helper->getAdminConfig('removeOrganisation') . ';
+          var enabled = ' . $helper->getAdminConfig('enabled') . ';
+          var customFields = ' . trim(preg_replace("/\r|\n/", "", $helper->getAdminConfig('customFields'))) . ';
+          // Exit early if disabled
+          if (enabled === false) return;
+          window.idpcConfig = {
+            apiKey: apiKey,
+            autocomplete: autocomplete,
+            removeOrganisation: removeOrganisation,
+            customFields: customFields
+          };
+          window.zenStart();
+        });
+    ', false);
+}
+?>

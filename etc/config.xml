@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<config
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd"
+>
+  <default>
+    <addresszen>
+      <settings>
+        <enabled>1</enabled>
+        <user_token />
+        <autocomplete>1</autocomplete>
+        <admin_autocomplete>1</admin_autocomplete>
+        <remove_organisation_store>0</remove_organisation_store>
+        <remove_organisation_admin>0</remove_organisation_admin>
+        <autocomplete_override>{}</autocomplete_override>
+        <custom_fields>[]</custom_fields>
+      </settings>
+    </addresszen>
+  </default>
+</config>
