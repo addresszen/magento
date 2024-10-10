@@ -1,6 +1,6 @@
 var interval = setTimeout(function() {
-  if (window.idpcStart) {
-    window.idpcStart();
+  if (window.zenStart) {
+    window.zenStart();
     clearInterval(interval);
   }
 }, 1000);

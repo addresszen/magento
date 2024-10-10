@@ -1,5 +1,5 @@
 {
-  "name": "addresszen/lookup",
+  "name": "addresszen/magento",
   "description": "AddressZen address search magento extension. Addresszen.com",
   "type": "magento2-module",
   "require": {
@@ -8,7 +8,7 @@
   "support": {
     "email": "support@addresszen.com",
     "chat": "https://chat.addresszen.com",
-    "docs": "https:///addresszen.com/guides/magento",
+    "docs": "https://addresszen.com/guides/magento",
     "source": "https://github.com/addresszen/magento",
     "issues": "https://github.com/addresszen/magento/issues"
   },

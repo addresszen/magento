@@ -4,7 +4,7 @@
 
 > US Address Search and Validation Magento Extension
 
-[![Packagist Version](https://img.shields.io/packagist/v/addresszen/module-addresslookup)](https://packagist.org/packages/addresszen/module-addresslookup)
+[![Packagist Version](https://img.shields.io/packagist/v/addresszen/magento)](https://packagist.org/packages/addresszen/magento)
 ![PHP from Packagist](https://img.shields.io/packagist/php-v/addresszen/module-addresslookup)
 ![CI (Bindings)](https://github.com/addresszen/magento/workflows/CI%20(Bindings)/badge.svg)
 
@@ -27,7 +27,7 @@ See our [guide](https://addresszen.com/guides/magento) for installation and conf
 - [Magento Marketplace](https://marketplace.magento.com/idealpostcodes-module-ukaddresssearch.html)
 - [Address Zen](https://addresszen.com/magento)
 - [Repository](https://github.com/addresszen/magento)
-- [Packagist](https://packagist.org/packages/addresszen/module-addresslookup)
+- [Packagist](https://packagist.org/packages/addresszen/magento)
 - [Changelog](https://github.com/addresszen/magento/blob/master/CHANGELOG.md)
 - [Releases](https://github.com/addresszen/magento/releases)
 - [Support](https://chat.addresszen.com/support)
