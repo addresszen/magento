@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/addresszen/magento/compare/1.0.0...1.0.1) (2024-10-11)
+
+
+### Bug Fixes
+
+* **Readme:** Tested on badge update ([6bfa756](https://github.com/addresszen/magento/commit/6bfa7568f00c733733f65036fc02ef0408a15817))
+
 # 1.0.0 (2024-10-11)
 
 
