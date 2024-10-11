@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://img.ideal-postcodes.co.uk/Magento%20Extension%20Logo@3x.png" alt="UK Address Search and Validation Magento Extension">
+  <img src="https://img.ideal-postcodes.co.uk/Magento%20Extension%20Logo@3x.png" alt="US Address Verification Magento Extension">
 </h1>
 
 > US Address Search and Validation Magento Extension
