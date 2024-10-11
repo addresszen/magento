@@ -12,10 +12,7 @@ This extension enables [addresszen.com](https://addresszen.com/) address validat
 
 Tested on Magento 2.1 - 2.4 on PHP 7.1-8.1
 
-![Magento 2.1 CI](https://github.com/addresszen/magento/workflows/Magento%202.1%20CI/badge.svg)
-![Magento 2.2 CI](https://github.com/addresszen/magento/workflows/Magento%202.2%20CI/badge.svg)
-![Magento 2.3 CI](https://github.com/addresszen/magento/workflows/Magento%202.3%20CI/badge.svg)
-![Magento 2.4 CI](https://github.com/addresszen/magento/workflows/Magento%202.4%20CI/badge.svg)
+![Magento 2.4 CI](https://github.com/addresszen/magento/workflows/Magento%202.4.6%20CI%20with%20PHP%208.2/badge.svg)
 
 See our [guide](https://addresszen.com/guides/magento) for installation and configuration instructions.
 
