@@ -23,15 +23,15 @@
     "start": "make bootstrap && make set-base-url",
     "build": "NODE_ENV=production rollup -c",
     "watch": "rollup -cw",
-    "test:e2e": "cypress run --config-file test/e2e/cypress.config.ts",
-    "test:e2e:open": "cypress open --config-file test/e2e/cypress.config.ts",
+    "test:e2e": "cypress run --config-file test/e2e/cypress.config.mjs",
+    "test:e2e:open": "cypress open --config-file test/e2e/cypress.config.mjs",
     "test:all": "npm start && npm run test:e2e && make down",
-    "test:snapshot": "cypress run --config-file test/snapshot/cypress.config.ts",
-    "test:snapshot:open": "cypress open --config-file test/snapshot/cypress.config.ts",
+    "test:snapshot": "cypress run --config-file test/snapshot/cypress.config.mjs",
+    "test:snapshot:open": "cypress open --config-file test/snapshot/cypress.config.mjs",
     "test:build": "rollup -c test/snapshot/rollup.config.js",
     "test:watch": "rollup -c test/snapshot/rollup.config.js -w",
     "test": "npm run test:snapshot",
-    "test:open": "cypress open --config-file test/snapshot/cypress.config.ts"
+    "test:open": "cypress open --config-file test/snapshot/cypress.config.mjs"
   },
   "release": {
     "extends": "@cablanchard/semantic-release"
