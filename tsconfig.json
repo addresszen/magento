@@ -6,6 +6,7 @@
     "esModuleInterop": true,
     "declaration": false,
     "module": "ESNext",
+    "moduleResolution": "node",
     "lib": ["ES2015", "es6", "dom"]
   },
   "include": ["lib/*"]

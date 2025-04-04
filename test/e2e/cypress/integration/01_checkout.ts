@@ -1,4 +1,4 @@
-/// <reference types="cypress" />;
+// <reference types="cypress" />;
 const version = Cypress.env("MAGENTO_VERSION");
 
 Cypress.on("uncaught:exception", (err) => {
@@ -46,6 +46,5 @@ describe("Checkout", () => {
     cy.visit("/index.php/checkout/");
     waitPerVersion(10000);
   });
-  //@ts-expect-error
   autocompleteSuite(suite);
 });
