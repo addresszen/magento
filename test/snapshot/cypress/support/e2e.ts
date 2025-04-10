@@ -1,5 +1,5 @@
 // ***********************************************************
-// This example support/index.js is processed and
+// This example support/e2e.ts is processed and
 // loaded automatically before your test files.
 //
 // This is a great place to put global configuration and
@@ -12,11 +12,6 @@
 // You can read more here:
 // https://on.cypress.io/configuration
 // ***********************************************************
-
-// Import commands.js using ES2015 syntax:
-
-// Alternatively you can use CommonJS syntax:
-// require('./commands')
 
 /// <reference types="cypress" />
 
@@ -82,7 +77,6 @@ const loadScript = async (url: string, { document }: Window): Promise<void> => {
 Cypress.Commands.add("setup", (url, store, customFields) => {
   cy.visit(url, {
     onBeforeLoad: (window) => {
-      //@ts-ignore
       window.idpcConfig = {
         apiKey: Cypress.env("API_KEY"),
         populateCounty: true,
@@ -92,7 +86,7 @@ Cypress.Commands.add("setup", (url, store, customFields) => {
           defaultCountry: "USA",
           detectCountry: false,
         },
-        // @ts-ignore
+        // @ts-ignore - customFields is used by the application but not typed in Config
         customFields: customFields || [],
       };
     },

@@ -12,15 +12,15 @@ jobs:
         node-version: [22.x]
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 
       - name: Cache node modules
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}-${{ matrix.node-version }}
@@ -34,7 +34,7 @@ jobs:
       - name: Build test bundles
         run: npm run test:build
 
-      - uses: cypress-io/github-action@v2
+      - uses: cypress-io/github-action@v6
         with:
           project: ./test/snapshot
         env:
