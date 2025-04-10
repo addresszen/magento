@@ -1,3 +1,11 @@
+## [1.0.2](https://github.com/addresszen/magento/compare/1.0.1...1.0.2) (2025-04-10)
+
+
+### Bug Fixes
+
+* **axios:** Security fix ([8180029](https://github.com/addresszen/magento/commit/81800292ee566991913c8024da365bc1a5a15bca))
+* **labels:** Remove some artifacts and fix to US format ([8c506a3](https://github.com/addresszen/magento/commit/8c506a3b130a28d192773c56dd15a3e069532652))
+
 ## [1.0.1](https://github.com/addresszen/magento/compare/1.0.0...1.0.1) (2024-10-11)
 
 
