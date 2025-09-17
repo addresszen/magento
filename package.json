@@ -38,7 +38,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@ideal-postcodes/address-finder": "~5.2.4",
+    "@ideal-postcodes/address-finder": "~5.2.6",
     "@ideal-postcodes/jsutil": "~7.4.3"
   },
   "devDependencies": {
