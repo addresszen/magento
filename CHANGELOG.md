@@ -1,3 +1,11 @@
+## [1.0.3](https://github.com/addresszen/magento/compare/1.0.2...1.0.3) (2026-01-05)
+
+
+### Bug Fixes
+
+* **axios:** add ARM64 platform support and update address-finder dependency ([b11afc0](https://github.com/addresszen/magento/commit/b11afc009c15f3fe445dfba9c123dd29f4407278))
+* **security:** add XSS protection for address fields and relax city validation rules ([cc0c80b](https://github.com/addresszen/magento/commit/cc0c80b50244181756862e594436ae54b99eac30))
+
 ## [1.0.2](https://github.com/addresszen/magento/compare/1.0.1...1.0.2) (2025-04-10)
 
 
