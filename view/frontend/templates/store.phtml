@@ -1,47 +1,20 @@
 <?php
-$helper = $this->helper('Addresszen\Lookup\Helper\Data');
+/**
+ * Copyright (c) Address Zen
+ *
+ * Address Zen Frontend Configuration Template
+ *
+ * Uses x-magento-init for secure JSON config passing to JavaScript.
+ *
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Addresszen\Lookup\ViewModel\Config $viewModel
+ */
+$viewModel = $block->getData('view_model');
 ?>
-<?php if(!isset($secureRenderer)) { ?>
-<script type="text/javascript" name="Ideal_Postcodes">
-document.addEventListener('DOMContentLoaded', function() {
-  var apiKey = "<?php echo $helper->getConfig('api_key'); ?>";
-  var autocomplete = <?php echo $helper->getConfig('addressAutocomplete'); ?>;
-  var removeOrganisation = <?php echo $helper->getConfig('removeOrganisation'); ?>;
-  var autocompleteOverride = <?php echo $helper->getConfig('autocompleteOverride'); ?>;
-  var enabled = <?php echo $helper->getConfig('enabled'); ?>;
-  var customFields = <?php echo trim(preg_replace('/\r|\n/', '', $helper->getConfig('customFields'))); ?>;
-  // Exit early if disabled
-  if (enabled === false) return;
-  window.idpcConfig = {
-    apiKey: apiKey,
-    autocomplete: autocomplete,
-    removeOrganisation: removeOrganisation,
-    autocompleteOverride: autocompleteOverride,
-    customFields: customFields
-  };
-  window.zenStart();
-});
-</script>
-<?php } else {
-    echo $secureRenderer->renderTag('script', [], '
-    document.addEventListener("DOMContentLoaded", function() {
-      var apiKey = "' . $helper->getConfig('api_key') . '";
-      var autocomplete = ' . $helper->getConfig('addressAutocomplete') . ';
-      var removeOrganisation = ' . $helper->getConfig('removeOrganisation') . ';
-      var autocompleteOverride = ' . $helper->getConfig('autocompleteOverride') . ';
-      var enabled = ' . $helper->getConfig('enabled') . ';
-      var customFields = ' . trim(preg_replace('/\r|\n/', '', $helper->getConfig('customFields'))) . ';
-      // Exit early if disabled
-      if (enabled === false) return;
-      window.idpcConfig = {
-        apiKey: apiKey,
-        autocomplete: autocomplete,
-        removeOrganisation: removeOrganisation,
-        autocompleteOverride: autocompleteOverride,
-        customFields: customFields
-      };
-      window.zenStart();
-    });
-', false);
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Addresszen_Lookup/js/address-zen-init": <?= $viewModel->getJsonConfig() ?>
+    }
 }
-?>
+</script>
