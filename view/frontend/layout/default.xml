@@ -1,11 +1,14 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <head>
-        <script src="Addresszen_Lookup::binding.min.js"/>
-    </head>
     <body>
         <referenceBlock name="head.additional">
-            <block class="Magento\Framework\View\Element\Template" name="addresszen.lookup.store" template="Addresszen_Lookup::store.phtml" />
+            <block class="Magento\Framework\View\Element\Template"
+                   name="addresszen.lookup.store"
+                   template="Addresszen_Lookup::store.phtml">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Addresszen\Lookup\ViewModel\Config</argument>
+                </arguments>
+            </block>
         </referenceBlock>
     </body>
 </page>

@@ -1,43 +1,20 @@
-<?php /** @var Magento\Framework\View\TemplateEngine\Php $this */
-$helper = $this->helper('Addresszen\Lookup\Helper\Data');
+<?php
+/**
+ * Copyright (c) Address Zen
+ *
+ * Address Zen Admin Configuration Template
+ *
+ * Uses x-magento-init for secure JSON config passing to JavaScript.
+ *
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Addresszen\Lookup\ViewModel\Config $viewModel
+ */
+$viewModel = $block->getData('view_model');
 ?>
-<?php if(!isset($secureRenderer)) { ?>
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function() {
-        var apiKey = "<?= $helper->getAdminConfig('api_key') ?>";
-        var autocomplete = <?= $helper->getAdminConfig('addressAutocomplete') ?>;
-        var removeOrganisation = <?= $helper->getAdminConfig('removeOrganisation') ?>;
-        var enabled = <?= $helper->getAdminConfig('enabled') ?>;
-        var customFields = <?= trim(preg_replace("/\r|\n/", "", $helper->getAdminConfig('customFields'))) ?>;
-        // Exit early if disabled
-        if (enabled === false) return;
-        window.idpcConfig = {
-            apiKey: apiKey,
-            autocomplete: autocomplete,
-            removeOrganisation: removeOrganisation,
-            customFields: customFields
-        };
-        window.zenStart();
-        });
-    </script>
-<?php } else {
-    echo $secureRenderer->renderTag('script', [], '
-        document.addEventListener("DOMContentLoaded", function() {
-          var apiKey = "' . $helper->getAdminConfig('api_key') . '";
-          var autocomplete = ' . $helper->getAdminConfig('addressAutocomplete') . ';
-          var removeOrganisation = ' . $helper->getAdminConfig('removeOrganisation') . ';
-          var enabled = ' . $helper->getAdminConfig('enabled') . ';
-          var customFields = ' . trim(preg_replace("/\r|\n/", "", $helper->getAdminConfig('customFields'))) . ';
-          // Exit early if disabled
-          if (enabled === false) return;
-          window.idpcConfig = {
-            apiKey: apiKey,
-            autocomplete: autocomplete,
-            removeOrganisation: removeOrganisation,
-            customFields: customFields
-          };
-          window.zenStart();
-        });
-    ', false);
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Addresszen_Lookup/js/address-zen-admin-init": <?= $viewModel->getAdminJsonConfig() ?>
+    }
 }
-?>
+</script>

@@ -14,18 +14,17 @@
  * @link https://addresszen.com
  */
 
-namespace Addresszen\Lookup\Setup;
+namespace Addresszen\Lookup\Setup\Patch\Data;
 
-use Magento\Framework\Setup\UpgradeDataInterface;
-use Magento\Framework\Setup\ModuleContextInterface;
+use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Customer\Setup\CustomerSetupFactory;
 use Magento\Customer\Api\AddressMetadataInterface;
 
 /**
- * Upgrade Data Script
+ * Data Patch to Update City Validation Rules
  *
- * This script updates the city attribute validation rules to allow
+ * This patch updates the city attribute validation rules to allow
  * real-world city names with periods (e.g., "St. Louis"), numbers,
  * ampersands, and other common punctuation marks.
  *
@@ -39,65 +38,42 @@ use Magento\Customer\Api\AddressMetadataInterface;
  * This override implements a more permissive pattern while maintaining
  * security and data integrity.
  */
-class UpgradeData implements UpgradeDataInterface
+class UpdateCityValidationRules implements DataPatchInterface
 {
+    /**
+     * @var ModuleDataSetupInterface
+     */
+    private $moduleDataSetup;
+
     /**
      * @var CustomerSetupFactory
      */
-    protected $customerSetupFactory;
+    private $customerSetupFactory;
 
     /**
      * Constructor
      *
+     * @param ModuleDataSetupInterface $moduleDataSetup
      * @param CustomerSetupFactory $customerSetupFactory
      */
-    public function __construct(CustomerSetupFactory $customerSetupFactory)
-    {
+    public function __construct(
+        ModuleDataSetupInterface $moduleDataSetup,
+        CustomerSetupFactory $customerSetupFactory
+    ) {
+        $this->moduleDataSetup = $moduleDataSetup;
         $this->customerSetupFactory = $customerSetupFactory;
     }
 
     /**
-     * Upgrade data for the module
+     * Apply the data patch
      *
-     * @param ModuleDataSetupInterface $setup
-     * @param ModuleContextInterface $context
      * @return void
      */
-    public function upgrade(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
+    public function apply()
     {
-        // Apply city validation override for version 3.1.3
-        if (version_compare($context->getVersion(), '3.1.3', '<')) {
-            $this->updateCityValidationRules($setup);
-        }
-    }
+        $this->moduleDataSetup->startSetup();
 
-    /**
-     * Update city attribute validation rules
-     *
-     * Overrides the default city validation regex to allow:
-     * - Letters (A-Z, a-z)
-     * - Numbers (0-9)
-     * - Spaces
-     * - Hyphens (-)
-     * - Periods/dots (.)
-     * - Ampersands (&)
-     * - Parentheses ()
-     * - Apostrophes (')
-     *
-     * This allows for real-world city names like:
-     * - "St. Louis", "St. Petersburg" (periods in abbreviations)
-     * - "Winston-Salem" (hyphens)
-     * - "29 Palms" (numbers)
-     * - "O'Fallon" (apostrophes)
-     *
-     * @param ModuleDataSetupInterface $setup
-     * @return void
-     */
-    protected function updateCityValidationRules(ModuleDataSetupInterface $setup)
-    {
-        $setup->startSetup();
-
-        $customerSetup = $this->customerSetupFactory->create(['setup' => $setup]);
+        $customerSetup = $this->customerSetupFactory->create(['setup' => $this->moduleDataSetup]);
 
         // Get the address entity type ID
         $addressEntityTypeId = $customerSetup->getEntityTypeId(
@@ -121,7 +97,7 @@ class UpgradeData implements UpgradeDataInterface
             $validateRules = [
                 'max_text_length' => 255,
                 'min_text_length' => 1,
-                'input_validation' => 'length' // Only validate length, not character type
+                'input_validation' => 'length'
             ];
 
             // Update the attribute with relaxed validation rules
@@ -132,12 +108,32 @@ class UpgradeData implements UpgradeDataInterface
                 'city',
                 [
                     'validate_rules' => json_encode($validateRules, JSON_UNESCAPED_SLASHES),
-                    'frontend_class' => null, // Remove any frontend validation classes
-                    'input_filter' => 'striptags' // Strip HTML/XML tags for XSS protection
+                    'frontend_class' => null,
+                    'input_filter' => 'striptags'
                 ]
             );
         }
 
-        $setup->endSetup();
+        $this->moduleDataSetup->endSetup();
+    }
+
+    /**
+     * Get array of patches that have to be executed prior to this
+     *
+     * @return string[]
+     */
+    public static function getDependencies()
+    {
+        return [];
+    }
+
+    /**
+     * Get aliases (previous names) for the patch
+     *
+     * @return string[]
+     */
+    public function getAliases()
+    {
+        return [];
     }
 }
