@@ -25,7 +25,7 @@ See our [guide](https://addresszen.com/guides/magento) for installation and conf
 - [Address Zen](https://addresszen.com/magento)
 - [Repository](https://github.com/addresszen/magento)
 - [Packagist](https://packagist.org/packages/addresszen/magento)
-- [Changelog](https://github.com/addresszen/magento/blob/master/CHANGELOG.md)
+- [Changelog](https://github.com/addresszen/magento/blob/main/CHANGELOG.md)
 - [Releases](https://github.com/addresszen/magento/releases)
 - [Support](https://chat.addresszen.com/support)
 - [Dev Chat](https://chat.addresszen.com)
