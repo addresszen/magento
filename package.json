@@ -47,7 +47,7 @@
     "@cablanchard/tsconfig": "~2.0.0",
     "@ideal-postcodes/api-fixtures": "~1.2.0",
     "@ideal-postcodes/api-typings": "~2.1.0",
-    "@prettier/plugin-php": "~0.18.4",
+    "@prettier/plugin-php": "~0.24.0",
     "@prettier/plugin-xml": "~0.13.1",
     "@rollup/plugin-commonjs": "~21.0.2",
     "@rollup/plugin-node-resolve": "~13.2.0",
