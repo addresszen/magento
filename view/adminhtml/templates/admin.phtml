@@ -1,20 +1,21 @@
 <?php
 /**
- * Copyright (c) Address Zen
- *
- * Address Zen Admin Configuration Template
- *
- * Uses x-magento-init for secure JSON config passing to JavaScript.
+ * Address Zen - Admin Configuration
  *
  * @var \Magento\Framework\View\Element\Template $block
- * @var \Addresszen\Lookup\ViewModel\Config $viewModel
+ * @var \Magento\Framework\Escaper $escaper
+ * @var \Addresszen\Lookup\ViewModel\AdminConfig $viewModel
  */
 $viewModel = $block->getData('view_model');
+
+if (!$viewModel->isEnabled()) {
+    return;
+}
 ?>
 <script type="text/x-magento-init">
 {
     "*": {
-        "Addresszen_Lookup/js/address-zen-admin-init": <?= $viewModel->getAdminJsonConfig() ?>
+        "Addresszen_Lookup/js/address-zen-admin-init": <?= /* @noEscape */ $viewModel->getJsonConfig() ?>
     }
 }
 </script>

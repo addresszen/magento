@@ -26,6 +26,9 @@ export interface Config extends BaseConfig {
   customFields?: OutputFields[];
 }
 
+const tags = ["addresszen"];
+const addressFinderTags = [...tags, "addressfinder"].join(",");
+
 export const setupAutocomplete = async (
   config: Config,
   outputFields: OutputFields,
@@ -37,6 +40,8 @@ export const setupAutocomplete = async (
     {
       apiKey: config.apiKey,
       checkKey: true,
+      queryOptions: { tags: addressFinderTags },
+      resolveOptions: { tags: addressFinderTags },
       removeOrganisation: config.removeOrganisation,
       populateCounty: config.populateCounty,
       defaultCountry: "USA",

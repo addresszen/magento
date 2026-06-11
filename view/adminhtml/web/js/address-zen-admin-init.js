@@ -1,27 +1,22 @@
 /**
- * Copyright (c) Address Zen
+ * Address Zen - Admin Initialization
  *
- * Address Zen Admin Initialization Component
- *
- * @package Addresszen_Lookup
+ * This module receives configuration from x-magento-init and initializes
+ * the Address Zen address search functionality for the admin panel.
  */
-define([
-    'jquery',
-    'Addresszen_Lookup/admin.min'
-], function ($) {
+define(['addressZenAdminBinding'], function () {
     'use strict';
 
     return function (config) {
-        if (config.enabled === false) {
+        if (!config.enabled || !config.apiKey) {
             return;
         }
 
         window.idpcConfig = {
-            apiKey: config.api_key,
-            autocomplete: config.addressAutocomplete,
+            apiKey: config.apiKey,
+            autocomplete: config.autocomplete,
+            populateCounty: config.populateCounty,
             removeOrganisation: config.removeOrganisation,
-            hoistCountryField: config.hoistCountryField,
-            requireCounty: config.requireCounty,
             customFields: config.customFields
         };
 

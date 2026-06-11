@@ -1,20 +1,26 @@
 <?php
 /**
- * Copyright (c) Address Zen
+ * Address Zen - Frontend Configuration
  *
- * Address Zen Frontend Configuration Template
- *
- * Uses x-magento-init for secure JSON config passing to JavaScript.
+ * Universal template that works with all themes (Luma, Hyvä, custom).
+ * Uses external script loading for CSP compliance.
  *
  * @var \Magento\Framework\View\Element\Template $block
- * @var \Addresszen\Lookup\ViewModel\Config $viewModel
+ * @var \Magento\Framework\Escaper $escaper
+ * @var \Addresszen\Lookup\ViewModel\StoreConfig $viewModel
  */
 $viewModel = $block->getData('view_model');
-?>
-<script type="text/x-magento-init">
-{
-    "*": {
-        "Addresszen_Lookup/js/address-zen-init": <?= $viewModel->getJsonConfig() ?>
-    }
+
+if (!$viewModel->isEnabled()) {
+    return;
 }
-</script>
+
+$config = $viewModel->getJsonConfig();
+$bindingUrl = $block->getViewFileUrl('Addresszen_Lookup::binding.min.js');
+$loaderUrl = $block->getViewFileUrl('Addresszen_Lookup::js/loader.js');
+?>
+<div id="addresszen-config" 
+     data-config="<?= $escaper->escapeHtmlAttr($config) ?>"
+     data-binding-url="<?= $escaper->escapeHtmlAttr($bindingUrl) ?>"
+     style="display:none;"></div>
+<script src="<?= $escaper->escapeHtmlAttr($loaderUrl) ?>"></script>
