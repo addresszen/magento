@@ -1,5 +1,5 @@
 import commonjs from "@rollup/plugin-commonjs";
-//import { terser } from "rollup-plugin-terser";
+import { terser } from "rollup-plugin-terser";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import ts from "@wessberg/rollup-plugin-ts";
 import json from '@rollup/plugin-json';
@@ -42,7 +42,7 @@ const config = (file) => {
           presets: [["@babel/preset-env", { targets }]],
         },
       }),
-      //terser(terserConfig)
+      terser(terserConfig)
     ],
   };
 };
