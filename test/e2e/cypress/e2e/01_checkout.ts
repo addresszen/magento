@@ -8,7 +8,7 @@ Cypress.on("uncaught:exception", (err) => {
 
 import {
   autocompleteSuite,
-} from "../../../snapshot/cypress/support/suite";
+} from "../support/suite";
 import { selectors } from "../../../../lib/billing";
 
 const address = {
