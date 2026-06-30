@@ -1,3 +1,28 @@
+# [2.0.0](https://github.com/addresszen/magento/compare/1.0.4...2.0.0) (2026-06-30)
+
+
+### Bug Fixes
+
+* **ci:** add playwright browser install step to ci-bindings workflow ([3579f92](https://github.com/addresszen/magento/commit/3579f927103d741a3a82e15265230c975d599006))
+* **docker:** migrate from Elasticsearch to OpenSearch for Magento 8.2 development environment ([ff2304c](https://github.com/addresszen/magento/commit/ff2304c2d10499b93a7a1beaf69efed924e5fce6))
+* **e2e:** move shared test suite to e2e support directory ([919bc4f](https://github.com/addresszen/magento/commit/919bc4fef5bc56f9f6baac5caf8243d9097610a1))
+* restore cypress dependency for E2E tests ([2b21b7b](https://github.com/addresszen/magento/commit/2b21b7bbee8271144fca710c46913f1e1d5dcd79))
+* use environment variable for API key in Playwright helpers ([a5b6f80](https://github.com/addresszen/magento/commit/a5b6f80546895e412cd10c480767781c441a6d5f))
+* use import.meta.url for ESM-compatible __dirname in playwright config ([c279b3c](https://github.com/addresszen/magento/commit/c279b3cd67f103c4532996d5497e2fbc3965b6a4))
+
+
+### Features
+
+* sync with ideal-postcodes/magento latest changes ([6d5eee3](https://github.com/addresszen/magento/commit/6d5eee32860ab27c24c46e356c9d56c43a996799))
+
+
+### BREAKING CHANGES
+
+* Frontend no longer uses RequireJS for store initialization.
+The extension now loads via a direct script tag pattern for better CSP compliance.
+
+Co-Authored-By: Marcin Filip <marcin.filip@gmail.com>
+
 ## [1.0.3](https://github.com/addresszen/magento/compare/1.0.2...1.0.3) (2026-01-05)
 
 
