@@ -43,11 +43,11 @@ echo 'Running magento setup:install'
   --admin-email=$MAGENTO_ADMIN_EMAIL \
   --admin-user=$MAGENTO_ADMIN_USERNAME \
   --admin-password=$MAGENTO_ADMIN_PASSWORD \
-  --search-engine='elasticsearch7' \
-  --elasticsearch-host='elasticsearch' \
-  --elasticsearch-port='9200' \
-  --elasticsearch-enable-auth='0' \
-  --elasticsearch-timeout='60'
+  --search-engine='opensearch' \
+  --opensearch-host='opensearch' \
+  --opensearch-port='9200' \
+  --opensearch-enable-auth='0' \
+  --opensearch-timeout='60'
 
 echo 'Enabled Address Zen extension'
 /var/www/html/bin/magento module:enable Addresszen_Lookup

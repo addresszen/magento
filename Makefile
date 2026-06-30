@@ -23,7 +23,7 @@ down:
 ## Initialise repository - run install-magento
 .PHONY: init
 init:
-	docker compose exec -T web dockerize -wait tcp://db:3306 -wait tcp://elasticsearch:9200 -timeout 60m /usr/local/bin/install-magento
+	docker compose exec -T web dockerize -wait tcp://db:3306 -wait tcp://opensearch:9200 -timeout 60m /usr/local/bin/install-magento
 
 ## -- Development Methods --
 
