@@ -1,16 +1,16 @@
 version: "3.0"
 services:
-  es:
-    image: arm64v8/elasticsearch:7.14.2
-    container_name: elasticsearch
+  opensearch:
+    image: opensearchproject/opensearch:2.11.0
+    container_name: opensearch
     platform: linux/arm64
     ports:
       - "9200:9200"
       - "9300:9300"
     environment:
       - discovery.type=single-node
-      - xpack.security.enabled=false
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m"
+      - plugins.security.disabled=true
     ulimits:
       memlock:
         soft: -1
@@ -23,7 +23,7 @@ services:
       - IPC_LOCK
   web:
     depends_on:
-      - es
+      - opensearch
     build:
       context: "."
       dockerfile: "Dockerfile"
