@@ -11,6 +11,7 @@ const storeSources = ["jquery.js", "store.js", "start.js"];
 
 export async function setup(page: Page, options: SetupOptions) {
   const { url, store, customFields } = options;
+  const apiKey = process.env.API_KEY || "test";
 
   await page.addInitScript((cfg) => {
     (window as any).idpcConfig = {
@@ -24,7 +25,7 @@ export async function setup(page: Page, options: SetupOptions) {
       },
       customFields: cfg.customFields || [],
     };
-  }, { apiKey: "ak_go", customFields: customFields || [] });
+  }, { apiKey, customFields: customFields || [] });
 
   await page.goto(url);
 
