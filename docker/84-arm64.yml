@@ -1,16 +1,17 @@
 version: "3.0"
 services:
   opensearch:
-    image: opensearchproject/opensearch:2.11.0
+    image: opensearchproject/opensearch:2.12.0
     container_name: opensearch
     platform: linux/arm64
     ports:
       - "9200:9200"
-      - "9300:9300"
+      - "9600:9600"
     environment:
       - discovery.type=single-node
+      - DISABLE_INSTALL_DEMO_CONFIG=true
+      - DISABLE_SECURITY_PLUGIN=true
       - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m"
-      - plugins.security.disabled=true
     ulimits:
       memlock:
         soft: -1
@@ -19,8 +20,6 @@ services:
         soft: 65536
         hard: 65536
     mem_limit: 1g
-    cap_add:
-      - IPC_LOCK
   web:
     depends_on:
       - opensearch
@@ -28,4 +27,4 @@ services:
       context: "."
       dockerfile: "Dockerfile"
       args:
-        BASE_IMAGE: idealpostcodes/magento-test:m2.4.6-php8.2
+        BASE_IMAGE: idealpostcodes/magento-test:m2.4.8-p4-php8.4

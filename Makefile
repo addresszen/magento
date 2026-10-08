@@ -1,4 +1,4 @@
-PHP ?= 82
+PHP ?= 84
 PLATFORM ?= $(shell uname -m)
 YML_SUFFIX := $(if $(filter arm64,$(PLATFORM)),-arm64,)
 .DEFAULT_GOAL := help
@@ -13,7 +13,7 @@ up: build init
 
 .PHONY: build
 build:
-	docker compose -f docker-compose.yml -f docker/${PHP}${YML_SUFFIX}.yml up -d
+	docker compose -f docker-compose.yml -f docker/${PHP}${YML_SUFFIX}.yml up -d --build --wait
 
 ## Shut down docker-compose services
 .PHONY: down
