@@ -1,17 +1,17 @@
-name: Magento 2.4.6 CI with PHP 8.2
+name: Magento 2.4.8 CI with PHP 8.3
 
 on:
   - push
 
 jobs:
-  ci:
+  ci-83:
     runs-on: blacksmith-4vcpu-ubuntu-2404
     steps:
       - uses: actions/checkout@v4
 
       - name: Launch Magento test environment
         env:
-          PHP: "82"
+          PHP: "83"
           COMPOSE_INTERACTIVE_NO_CLI: "1"
         run: make up
 

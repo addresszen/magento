@@ -1,0 +1,38 @@
+name: Magento 2.4.8 CI with PHP 8.4
+
+on:
+  - push
+
+jobs:
+  ci-84:
+    runs-on: blacksmith-4vcpu-ubuntu-2404
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Launch Magento test environment
+        env:
+          PHP: "84"
+          COMPOSE_INTERACTIVE_NO_CLI: "1"
+        run: make up
+
+      - name: Setup Node
+        uses: useblacksmith/setup-node@v5
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          project: ./test/e2e
+          config: baseUrl=http://localhost:3000
+          browser: chrome
+          wait-on: 'http://localhost:3000'
+          wait-on-timeout: 120
+        env:
+          CYPRESS_API_KEY: ${{ secrets.API_KEY }}
+          CYPRESS_MAGENTO_VERSION: "2.4"
+          NODE_OPTIONS: "--max-old-space-size=4096"

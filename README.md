@@ -10,9 +10,10 @@
 
 This extension enables [addresszen.com](https://addresszen.com/) address validation for US addresses on a Magento store.
 
-Tested on Magento 2.1 - 2.4 on PHP 7.1-8.1
+Tested on Magento 2.4.8 on PHP 8.3 and 8.4. Requires PHP 7.0 or later.
 
-![Magento 2.4 CI](https://github.com/addresszen/magento/workflows/Magento%202.4.6%20CI%20with%20PHP%208.2/badge.svg)
+![PHP 8.3 CI](https://github.com/addresszen/magento/actions/workflows/ci-83.yml/badge.svg)
+![PHP 8.4 CI](https://github.com/addresszen/magento/actions/workflows/ci-84.yml/badge.svg)
 
 See our [guide](https://addresszen.com/guides/magento) for installation and configuration instructions.
 
