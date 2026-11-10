@@ -25,7 +25,7 @@
     "watch": "rollup -cw",
     "lint": "eslint lib/**/*.ts",
     "lint-fix": "eslint lib/**/*.ts --fix",
-    "test:e2e": "playwright test --config test/e2e/playwright.config.ts",
+    "test:e2e": "cypress run --project test/e2e",
     "test:snapshot": "playwright test --config test/snapshot/playwright.config.ts",
     "test:build": "rollup -c test/snapshot/rollup.config.js",
     "test:watch": "rollup -c test/snapshot/rollup.config.js -w",
@@ -52,7 +52,32 @@
   "overrides": {
     "@ideal-postcodes/address-finder": {
       "@ideal-postcodes/jsutil": "~7.4.3"
-    }
+    },
+    "handlebars": "4.7.10",
+    "flatted": "3.4.4",
+    "axios": "1.20.0",
+    "form-data": "4.0.6",
+    "@babel/plugin-transform-modules-systemjs": "7.29.4",
+    "@babel/core": "7.29.6",
+    "serialize-javascript": "7.1.3",
+    "fast-uri": "3.1.9",
+    "tmp": "0.2.7",
+    "browserslist": "4.28.7",
+    "lodash": "4.18.1",
+    "qs": "6.16.1",
+    "tar": "7.5.21",
+    "ip-address": "10.7.5",
+    "minimatch@<4": "3.1.5",
+    "minimatch@>=7 <11.0.1": "11.0.1",
+    "brace-expansion@<2": "1.1.21",
+    "brace-expansion@>=2 <3": "2.1.7",
+    "picomatch@<3": "2.3.2",
+    "picomatch@>=4 <4.0.4": "4.0.4",
+    "js-yaml@>=3 <4": "3.15.2",
+    "js-yaml@>=4 <5": "4.3.2",
+    "follow-redirects": "1.16.2",
+    "undici@>=6 <6.29.1": "6.29.1",
+    "npm@>=11 <11.21.2": "11.21.2"
   },
   "dependencies": {
     "@ideal-postcodes/address-finder": "~5.2.6"
@@ -64,7 +89,7 @@
     "@ideal-postcodes/api-fixtures": "~1.2.0",
     "@ideal-postcodes/api-typings": "~2.1.0",
     "@ideal-postcodes/jsutil": "~4.6.0",
-    "@playwright/test": "~1.52.0",
+    "@playwright/test": "~1.64.1",
     "@prettier/plugin-php": "~0.18.4",
     "@prettier/plugin-xml": "~0.13.1",
     "@rollup/plugin-commonjs": "~21.0.2",
@@ -79,14 +104,17 @@
     "@typescript-eslint/eslint-plugin": "~5.17.0",
     "@typescript-eslint/parser": "~5.19.0",
     "@wessberg/rollup-plugin-ts": "~1.3.14",
-    "cypress": "~14.2.1",
+    "cypress": "~16.2.1",
     "eslint": "~7.32.0",
     "http-server": "~14.1.1",
     "prettier": "~2.2.1",
     "process": "~0.11.10",
-    "rollup": "~2.70.1",
-    "rollup-plugin-terser": "~7.0.2",
+    "rollup": "~2.80.0",
     "semantic-release": "~25.0.9",
-    "typescript": "~4.2.4"
+    "typescript": "~5.9.3",
+    "@rollup/plugin-terser": "~0.4.4"
+  },
+  "engines": {
+    "node": "^24.15.0 || >=26.0.0"
   }
 }

@@ -9,7 +9,7 @@ export default defineConfig({
     supportFile: 'cypress/support/e2e.ts',
     specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx}',
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      config.expose = { ...config.expose, MAGENTO_VERSION: config.env.MAGENTO_VERSION };
       return config;
     },
   },
