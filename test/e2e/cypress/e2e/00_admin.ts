@@ -1,5 +1,5 @@
 /// <reference types="cypress" />;
-const version = Cypress.env("MAGENTO_VERSION");
+const version = Cypress.expose("MAGENTO_VERSION");
 
 const logout = () => {
   if (version == "2.2") {
@@ -46,8 +46,6 @@ describe("Admin", () => {
     logout();
   });
 
-  const apiKey = Cypress.env("API_KEY");
-
   it("Can navigate to config page", () => {
     // Login to admin page
     cy.visit("/admin");
@@ -63,9 +61,11 @@ describe("Admin", () => {
       "include",
       "/index.php/admin/admin/system_config/edit/section/address_zen"
     );
-    cy.get("#address_zen_required_api_key")
-      .clear({ force: true })
-      .type(apiKey, { force: true });
+    cy.env(["API_KEY"], { log: false }).then(({ API_KEY }) => {
+      cy.get("#address_zen_required_api_key")
+        .clear({ force: true })
+        .type(API_KEY, { force: true, log: false });
+    });
     cy.get("#address_zen_admin-head").click();
     cy.get("#address_zen_admin_autocomplete_override")
       .clear({ force: true })
