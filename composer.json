@@ -1,6 +1,6 @@
 {
   "name": "addresszen/magento",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "AddressZen address search magento extension. Addresszen.com",
   "type": "magento2-module",
   "require": {

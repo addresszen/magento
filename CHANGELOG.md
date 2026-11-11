@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/addresszen/magento/compare/2.0.0...2.0.1) (2026-11-11)
+
+
+### Bug Fixes
+
+* **security:** complete legacy dependency fixes ([4d1b2d3](https://github.com/addresszen/magento/commit/4d1b2d3c3e93623f60ba50307d32c626814c228a))
+
 # [2.0.0](https://github.com/addresszen/magento/compare/1.0.4...2.0.0) (2026-06-30)
 
 
